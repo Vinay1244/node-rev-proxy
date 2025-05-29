@@ -1,0 +1,16 @@
+version: '3'
+services:
+  backend:
+    build: .
+    container_name: node_backend
+    ports:
+      - "5000:5000"
+  
+  nginx:
+    image: nginx:alpine
+    container_name: nginx_proxy
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+
